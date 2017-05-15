@@ -2,9 +2,10 @@
 #define GLOBAL_H
 
 #include <map>
+#include <array>
 using namespace std;
 
-enum PokemonTypes {
+enum PokemonType {
 	normal,
 	fighting,
 	flying,
@@ -25,7 +26,7 @@ enum PokemonTypes {
 	fairy
 };
 
-map<PokemonTypes,string> TypeString ({
+map<PokemonType,string> PokemonTypeString ({
 	{normal,"normal"},
 	{fighting,"fighting"},
 	{flying,"flying"},
