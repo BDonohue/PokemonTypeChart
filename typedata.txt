@@ -225,3 +225,4 @@ fire
 poison
 steel
 NOEFFECT
+NEWTYPE

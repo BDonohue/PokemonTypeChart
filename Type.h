@@ -1,3 +1,6 @@
+#ifndef TYPE_H
+#define TYPE_H
+
 #include "PokemonType.h"
 using namespace std;
 
@@ -11,3 +14,5 @@ class Type{
 	private:
 		map<PokemonType,float> PokemonTypeString;
 };
+
+#endif

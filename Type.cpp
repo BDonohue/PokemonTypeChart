@@ -1,9 +1,9 @@
-#include "Class.h"
+#include "Type.h"
 using namespace std;
 
 Type::Type(){
 	for(int newType = normal; newType <= fairy; newType++){
-		PokemonTypeString[type] = 1;
+		PokemonTypeString[static_cast<PokemonType>(newType)] = 1;
 	}
 }
 
