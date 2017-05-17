@@ -10,32 +10,38 @@ int main(){
     ifstream infile; 
     infile.open("typedata.txt"); 
     string word;
+    PokemonType addTypeName;
     Type addType;
-
     for(int typeCounter = normal; typeCounter <= fairy; typeCounter++){
-        /*
         while(word != "NEWTYPE"){
             infile >> word;
         }
         infile >> word;
-        //newType = PokemonStringToType[word];
+        //MAKE NEW TYPE
+        addTypeName = PokemonStringToType[word];
         while(word != "SUPEREFFECTIVE"){
             infile >> word;
         }
+        infile >> word;
         while(word != "NOTVERYEFFECTIVE"){
             //ADD SUPEREFFECTIVE
+            addType.addSuperEffective(PokemonStringToType[word]);
             infile >> word;
         }
+        infile >> word;
         while(word != "NOEFFECT"){
             //ADD NOTVERYEFFECTIVE
+            addType.addNotVeryEffective(PokemonStringToType[word]);
             infile >> word;
         }
+        infile >> word;
         while(word != "NEWTYPE"){
             //ADD NOEFFECT
-        }
-        */
+            addType.addNoEffect(PokemonStringToType[word]);
+            infile >> word;
+        }  
+        PokemonTypeChart[addTypeName] = addType;
     }
-
     infile.close();
     /*
     map<array<PokemonType,2>,int> PokemonTypeValue ({{}});
