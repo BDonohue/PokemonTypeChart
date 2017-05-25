@@ -19,6 +19,10 @@ void Type::addNoEffect(PokemonType type){
 	PokemonTypeString[type] = 0;
 }
 
+void Type::addTypeAndMulti(PokemonType type, int multi){
+	PokemonTypeString[type] = multi;
+}
+
 float Type::getMultiplier(PokemonType type){
 	return PokemonTypeString[type];
 }
