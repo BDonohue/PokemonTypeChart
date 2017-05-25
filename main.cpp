@@ -11,8 +11,8 @@ int main(){
     infile.open("typedata.txt"); 
     string word;
     PokemonType addTypeName;
-    Type addType;
     for(int typeCounter = normal; typeCounter <= fairy; typeCounter++){
+        Type addType;
         while(word != "NEWTYPE"){
             infile >> word;
         }
