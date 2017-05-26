@@ -19,7 +19,7 @@ void Type::addNoEffect(PokemonType type){
 	PokemonTypeString[type] = 0;
 }
 
-void Type::addTypeAndMulti(PokemonType type, int multi){
+void Type::addTypeAndMulti(PokemonType type, float multi){
 	PokemonTypeString[type] = multi;
 }
 

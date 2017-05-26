@@ -18,26 +18,22 @@ int main(){
             infile >> word;
         }
         infile >> word;
-        //MAKE NEW TYPE
         addTypeName = PokemonStringToType[word];
         while(word != "SUPEREFFECTIVE"){
             infile >> word;
         }
         infile >> word;
         while(word != "NOTVERYEFFECTIVE"){
-            //ADD SUPEREFFECTIVE
             addType.addSuperEffective(PokemonStringToType[word]);
             infile >> word;
         }
         infile >> word;
         while(word != "NOEFFECT"){
-            //ADD NOTVERYEFFECTIVE
             addType.addNotVeryEffective(PokemonStringToType[word]);
             infile >> word;
         }
         infile >> word;
         while(word != "NEWTYPE"){
-            //ADD NOEFFECT
             addType.addNoEffect(PokemonStringToType[word]);
             infile >> word;
         }  
@@ -49,9 +45,7 @@ int main(){
     for(int typeCounter = normal; typeCounter <= fairy; typeCounter++){
         Type addType;
         Type addType2;
-        int addMulti;
-        //figure out which types are super effective against normal
-        //fighting should be 2, ghost should be 0
+        float addMulti;
         for(int typeCounter2 = normal; typeCounter2 <= fairy; typeCounter2++){
             addType2 = PokemonTypeChartAttack[static_cast<PokemonType>(typeCounter2)];
             addMulti = addType2.getMultiplier(static_cast<PokemonType>(typeCounter));
@@ -61,15 +55,24 @@ int main(){
     }
     //ask user what they want
     string input, input2;
-    int cut;
+    int cut, attack;
+    attack = 1;
     Type currentType, currentType2;
     map<string,PokemonType>::iterator it, it2;
     while(1){
-        cout << "Input type: " << endl;
+        cout << "Commands:\nquit attack defense\n\nInput type: " << endl;
         cin;
         getline(cin,input);
         if(input == "quit"){
             break;
+        }
+        if(input == "attack"){
+            cout << "Mode set to attack" << endl;
+            attack = 1;
+        }
+        if(input == "defense"){
+            cout << "Mode set to defense" << endl;
+            attack = 0;
         }
         if(input.find(" ") != std::string::npos){
             cut = input.find(" ");
@@ -78,10 +81,14 @@ int main(){
             it = PokemonStringToType.find(input);
             it2 = PokemonStringToType.find(input2);
             if(it != PokemonStringToType.end() && it2 != PokemonStringToType.end()){
-                //Change between attack and defense
-                currentType = PokemonTypeChartDefense[PokemonStringToType[input]];
-                currentType2 = PokemonTypeChartDefense[PokemonStringToType[input2]];
-                cout << "Type Chart against " << input << " and " << input2 << ":" << endl;
+                if(attack){
+                    currentType = PokemonTypeChartAttack[PokemonStringToType[input]];
+                    currentType2 = PokemonTypeChartAttack[PokemonStringToType[input2]];
+                }else{
+                    currentType = PokemonTypeChartDefense[PokemonStringToType[input]];
+                    currentType2 = PokemonTypeChartDefense[PokemonStringToType[input2]];  
+                }
+                cout << "Type Chart: " << input << " and " << input2 << endl;
                 for(int typeCounter = normal; typeCounter <= fairy; typeCounter++){
                     cout << PokemonTypeToString[static_cast<PokemonType>(typeCounter)] << " ";
                     cout << currentType.getMultiplier(static_cast<PokemonType>(typeCounter)) * currentType2.getMultiplier(static_cast<PokemonType>(typeCounter)) << endl;
@@ -92,9 +99,12 @@ int main(){
         } else {
             it = PokemonStringToType.find(input);
             if (it != PokemonStringToType.end()){
-                //Change between attack and defense
-                currentType = PokemonTypeChartDefense[PokemonStringToType[input]];
-                cout << "Type Chart against " << input << ":" << endl;
+                if(attack){
+                    currentType = PokemonTypeChartAttack[PokemonStringToType[input]];
+                }else{
+                    currentType = PokemonTypeChartDefense[PokemonStringToType[input]];
+                }
+                cout << "Type Chart: " << input << endl;
                 for(int typeCounter = normal; typeCounter <= fairy; typeCounter++){
                     cout << PokemonTypeToString[static_cast<PokemonType>(typeCounter)] << " ";
                     cout << currentType.getMultiplier(static_cast<PokemonType>(typeCounter)) << endl;

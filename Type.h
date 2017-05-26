@@ -10,7 +10,7 @@ class Type{
 		void addSuperEffective(PokemonType type);
 		void addNotVeryEffective(PokemonType type);
 		void addNoEffect(PokemonType type);
-		void addTypeAndMulti(PokemonType type, int multi);
+		void addTypeAndMulti(PokemonType type, float multi);
 		float getMultiplier(PokemonType type);
 	private:
 		map<PokemonType,float> PokemonTypeString;
